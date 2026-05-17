@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+@import "../../brand/04-tokens/tokens.css";
+
+/* Page-level resets keyed to the tokens. */
+html { scroll-behavior: smooth; }
+body { background: var(--color-paper); color: var(--color-ink); }
+
+::selection {
+  background: var(--color-bottle);
+  color: var(--color-paper);
+}
+
+/* Inline body-copy links — scoped to .prose so utility-styled anchors
+ * (Nav wordmark, hero CTAs, footer social) keep their explicit Tailwind classes.
+ * Use <div className="prose"> around any block of running prose with inline links. */
+.prose a {
+  color: var(--color-bottle);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.prose a:hover { color: var(--color-bottle-deep); }
+
+/* Kicker — always uppercase. Augments Tailwind's `text-kicker` token
+ * (which sets size/leading/tracking/weight) so components don't have to
+ * carry an explicit `uppercase` class everywhere. Wrapped in @layer utilities
+ * so it composes with Tailwind v4's generated utility class. */
+@layer utilities {
+  .text-kicker {
+    text-transform: uppercase;
+  }
+}
+
+/* Wordmark idle micro-animation — subtle letter-spacing breathing,
+ * after the initial reveal completes. */
+@keyframes wordmark-idle {
+  0%, 100% { letter-spacing: -0.04em; }
+  50%      { letter-spacing: -0.038em; }
+}
+
+/* Hero loop — strip every native control/play overlay across browsers.
+ * Safari and iOS Safari render a persistent "tap to play" overlay even
+ * with controls=false when autoplay can't fire; cover every shadow-DOM
+ * pseudo-element with redundant cancellations so the badge can never paint. */
+video[data-hero-loop]::-webkit-media-controls,
+video[data-hero-loop]::-webkit-media-controls-enclosure,
+video[data-hero-loop]::-webkit-media-controls-panel,
+video[data-hero-loop]::-webkit-media-controls-overlay-enclosure,
+video[data-hero-loop]::-webkit-media-controls-overlay-play-button,
+video[data-hero-loop]::-webkit-media-controls-start-playback-button,
+video[data-hero-loop]::-webkit-media-controls-play-button,
+video[data-hero-loop]::-webkit-media-controls-fullscreen-button,
+video[data-hero-loop]::-webkit-media-controls-mute-button,
+video[data-hero-loop]::-webkit-media-controls-timeline,
+video[data-hero-loop]::-webkit-media-controls-current-time-display,
+video[data-hero-loop]::-webkit-media-controls-time-remaining-display,
+video[data-hero-loop]::-webkit-media-controls-volume-slider {
+  display: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+}
+video[data-hero-loop] {
+  pointer-events: none;
+}
+
+/* Hero LLM-chat loading dots — three dots bounce sequentially. */
+@keyframes mira-dot-bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40%           { transform: translateY(-3px); opacity: 1; }
+}
+
+/* Marquee — two rows scroll in opposite directions. The track holds two copies
+ * of the tile set, so translating -50% of the track width loops seamlessly. */
+@keyframes marquee-left {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes marquee-right {
+  0%   { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+@layer utilities {
+  .animate-marquee-left  { animation: marquee-left 90s linear infinite; }
+  .animate-marquee-right { animation: marquee-right 90s linear infinite; }
+}
+
+/* Ken Burns drift+zoom — used on the Carousel motion row to read as
+ * "animated version" of the still image. Alternates direction so adjacent
+ * tiles don't drift the same way. */
+@keyframes ken-burns {
+  0%   { transform: scale(1.0)  translate3d(0, 0, 0); }
+  50%  { transform: scale(1.08) translate3d(-1.5%, -1.5%, 0); }
+  100% { transform: scale(1.0)  translate3d(0, 0, 0); }
+}
+@layer utilities {
+  .animate-ken-burns { animation: ken-burns 14s ease-in-out infinite; }
+}
+
+/* Reduced-motion: disable everything decorative. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  video[data-hero-loop] {
+    display: none;
+  }
+}
+
+/* Paper grain — tiled noise on the body background gives the cream a
+ * real-paper texture. Subtle (5% alpha), tiled at 160px so it doesn't
+ * read as a pattern. */
+body {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.05  0 0 0 0 0.04  0 0 0 0 0.03  0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-color: var(--color-paper);
+  background-repeat: repeat;
+}

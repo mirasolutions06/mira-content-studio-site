@@ -1,0 +1,12 @@
+{
+  "slug": "gjeans",
+  "name": "GJeans",
+  "category": "Denim",
+  "kicker": "Spring campaign",
+  "summary": "A denim line for everyday wear. Hero shoot for the spring drop — six images in a sun-warmed bedroom interior.",
+  "cover": "/studio/gjeans.jpg",
+  "coverVideo": "/studio/gjeans.mp4",
+  "images": [
+    { "src": "/studio/gjeans.jpg", "alt": "Hero — model in light-wash wide-leg jeans, morning interior", "size": "hero" }
+  ]
+}

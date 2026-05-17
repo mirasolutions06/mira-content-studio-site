@@ -1,0 +1,12 @@
+{
+  "slug": "objet",
+  "name": "Objet",
+  "category": "Fragrance",
+  "kicker": "Coastal edition",
+  "summary": "An eau de parfum built around sea-air and moss. Coastal edition campaign — bottle on weathered rock, soft maritime light.",
+  "cover": "/studio/objet.jpg",
+  "coverVideo": "/studio/objet.mp4",
+  "images": [
+    { "src": "/studio/objet.jpg", "alt": "Hero — glass perfume flacon on a mossy rock with the Atlantic behind", "size": "hero" }
+  ]
+}

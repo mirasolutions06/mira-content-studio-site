@@ -1,0 +1,12 @@
+{
+  "slug": "botanica",
+  "name": "Botanica",
+  "category": "Gin",
+  "kicker": "Summer launch",
+  "summary": "A small-batch gin distilled with carnation and cardamom. Summer launch campaign — saturated blue, suspended florals.",
+  "cover": "/studio/botanica.jpg",
+  "coverVideo": "/studio/botanica.mp4",
+  "images": [
+    { "src": "/studio/botanica.jpg", "alt": "Hero — gin bottle suspended in blue sky with floating carnations", "size": "hero" }
+  ]
+}

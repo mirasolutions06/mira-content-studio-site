@@ -1,0 +1,12 @@
+{
+  "slug": "mare",
+  "name": "Mare",
+  "category": "Jewelry",
+  "kicker": "Everyday fine collection",
+  "summary": "Fine jewelry made for everyday wear. Hero portrait campaign — intimate macro, real skin, gold catching daylight.",
+  "cover": "/studio/mare.jpg",
+  "coverVideo": "/studio/mare.mp4",
+  "images": [
+    { "src": "/studio/mare.jpg", "alt": "Hero — model with gold earrings and signet ring, freckled skin", "size": "hero" }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "slug": "tildeo",
+  "name": "Tildeo",
+  "category": "Watches",
+  "kicker": "Hero campaign",
+  "summary": "Minimalist watches built for everyday wear. Hero campaign — model in a vintage car at golden hour, the watch on his outstretched arm.",
+  "cover": "/studio/tildeo.jpg",
+  "coverVideo": "/studio/tildeo.mp4",
+  "images": [
+    { "src": "/studio/tildeo.jpg", "alt": "Hero — model in cream vintage car at golden hour, Tildeo watch on wrist", "size": "hero" }
+  ]
+}

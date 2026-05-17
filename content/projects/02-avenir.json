@@ -1,0 +1,12 @@
+{
+  "slug": "avenir",
+  "name": "Avenir",
+  "category": "Footwear",
+  "kicker": "City run series",
+  "summary": "Performance running shoes built for the city. Campaign shoot — feet, motion, urban morning light.",
+  "cover": "/studio/avenir.jpg",
+  "coverVideo": "/studio/avenir.mp4",
+  "images": [
+    { "src": "/studio/avenir.jpg", "alt": "Hero — white runners in a green doorway, wet pavement", "size": "hero" }
+  ]
+}
