@@ -30,8 +30,11 @@ export function Hero() {
     v.setAttribute('disableremoteplayback', '');
     v.setAttribute('aria-hidden', 'true');
     v.dataset.heroLoop = 'true';
-    v.className = 'absolute inset-0 h-full w-full object-cover';
-    v.style.objectPosition = 'right center';
+    // Below md: object-position 75% lands the model in the centre of a portrait
+    //   container (the source is 16:9 with the subject right-of-centre, so pure
+    //   `center` pushes her off to the right and `right` clips her to the left edge).
+    // md and up: shift fully right so the left half is clear for the text column.
+    v.className = 'absolute inset-0 h-full w-full object-cover object-[75%_50%] md:object-right';
 
     const webm = document.createElement('source');
     webm.src = '/hero/hero-loop.webm';
@@ -90,13 +93,26 @@ export function Hero() {
             'linear-gradient(to bottom, rgba(251, 250, 246, 0) 0%, rgba(251, 250, 246, 0.6) 55%, var(--color-paper) 100%)',
         }}
       />
+      {/* Mobile-only text scrim — paper-toned vertical fade behind the centred
+       *  headline so the bold type lifts off the model's face without boxing
+       *  her in. Kept gentle (≤30% paper) so it reads as soft light, not a wash.
+       *  Hidden from md upward, where the text sits in the left half and
+       *  doesn't overlap her. */}
+      <div
+        className="md:hidden pointer-events-none absolute inset-0 z-[5]"
+        aria-hidden="true"
+        style={{
+          background:
+            'linear-gradient(to bottom, rgba(251, 250, 246, 0) 12%, rgba(251, 250, 246, 0.30) 40%, rgba(251, 250, 246, 0.30) 60%, rgba(251, 250, 246, 0) 88%)',
+        }}
+      />
       <div className="relative z-10 mx-auto max-w-6xl px-space-4 sm:px-space-6 py-space-8 min-h-[80vh] flex flex-col justify-center items-center md:items-start text-center md:text-left">
         <div className="max-w-md md:max-w-2xl">
-          <h1 className="text-display text-ink">
+          <h1 className="text-[3.75rem] leading-[1.0] tracking-[-0.04em] font-bold sm:text-display sm:font-semibold text-ink">
             <span className="block">Brand content<span className="text-bottle">.</span></span>
             <span className="block">Without the agency<span className="text-bottle">.</span></span>
           </h1>
-          <p className="mt-space-5 text-body text-ink/70 max-w-md">
+          <p className="mt-space-5 text-body-lg sm:text-body font-medium sm:font-normal text-ink/85 sm:text-ink/70 max-w-md">
             One brief in, one finished campaign out.
           </p>
           <div className="mt-space-6 flex flex-wrap justify-center md:justify-start gap-space-2">

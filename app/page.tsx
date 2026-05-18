@@ -2,6 +2,7 @@ import { Nav } from '@/components/Nav';
 import { Hero } from '@/components/Hero';
 import { WorkflowVideo } from '@/components/WorkflowVideo';
 import { Carousel } from '@/components/Carousel';
+import { Approach } from '@/components/Approach';
 import { ServicePricing } from '@/components/ServicePricing';
 import { FAQ } from '@/components/FAQ';
 import { Contact } from '@/components/Contact';
@@ -17,6 +18,7 @@ export default function HomePage() {
         <Hero />
         <WorkflowVideo />
         <SectionReveal><Carousel /></SectionReveal>
+        <SectionReveal><Approach /></SectionReveal>
         <SectionReveal><ServicePricing /></SectionReveal>
         <SectionReveal><FAQ /></SectionReveal>
         <SectionReveal><Contact /></SectionReveal>
