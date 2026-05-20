@@ -19,7 +19,9 @@ const helpLinks: NavLink[] = [
   { href: 'mailto:hello@miracontent.studio', label: 'Email us' },
 ];
 
-const social: { label: string; href: string; Icon: () => React.JSX.Element }[] = [];
+const social: { label: string; href: string; Icon: () => React.JSX.Element }[] = [
+  { label: 'Instagram', href: 'https://instagram.com/miracontent.studio', Icon: InstagramIcon },
+];
 
 export function Footer() {
   const year = new Date().getFullYear();
