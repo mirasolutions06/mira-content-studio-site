@@ -5,31 +5,47 @@ import { useEffect, useRef, useState } from 'react';
 const FADE_MS = 380;
 
 /**
- * Autoplaying muted loop video that softens the loop seam.
+ * Muted loop video that fetches nothing until first asked to play.
  *
- * Browser-native `loop` causes a visible jump because the last frame
- * rarely matches the first. We fade opacity to 0 over the last FADE_MS
- * and back to 1 over the first FADE_MS. The tile underneath uses the
- * poster image as a CSS background, so the dip reads as a brief
- * crossfade to the still cover (also from the same brand) rather than a
- * flash to bg color.
+ * `playing` is controlled by the parent (hover on pointer devices, in-view on
+ * touch). The element isn't mounted at all until the first play request, so
+ * the page never pays for video bytes the visitor doesn't look at. Once
+ * mounted it stays mounted — pausing keeps the decoded frames warm for the
+ * next hover.
  *
- * Single video element per tile keeps us under Chrome's concurrent
- * decoder cap — a two-video crossfade hits that limit and freezes lanes.
+ * Browser-native `loop` causes a visible jump because the last frame rarely
+ * matches the first. We fade opacity to 0 over the last FADE_MS and back in
+ * over the first FADE_MS; the still image underneath reads as a brief
+ * crossfade rather than a flash.
  */
 export function LoopVideo({
   src,
   poster,
+  playing,
   className = '',
 }: {
   src: string;
   poster: string;
+  playing: boolean;
   className?: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
-  const [opacity, setOpacity] = useState(1);
+  const [started, setStarted] = useState(false);
+  const [opacity, setOpacity] = useState(0);
 
   useEffect(() => {
+    if (playing && !started) setStarted(true);
+  }, [playing, started]);
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || !started) return;
+    if (playing) v.play().catch(() => {});
+    else v.pause();
+  }, [playing, started]);
+
+  useEffect(() => {
+    if (!started) return;
     const v = ref.current;
     if (!v) return;
 
@@ -52,7 +68,9 @@ export function LoopVideo({
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [started]);
+
+  if (!started) return null;
 
   return (
     <video
@@ -66,7 +84,12 @@ export function LoopVideo({
       preload="auto"
       aria-hidden="true"
       className={className}
-      style={{ opacity }}
+      // Floor at 0.05 while playing: Chrome auto-pauses muted autoplay video
+      // it considers invisible, and opacity:0 counts as invisible.
+      style={{
+        opacity: playing ? Math.max(opacity, 0.05) : 0,
+        transition: 'opacity 300ms ease-out',
+      }}
     />
   );
 }

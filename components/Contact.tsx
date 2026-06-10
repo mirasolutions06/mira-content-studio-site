@@ -1,17 +1,8 @@
-// Stripe Payment Link (test mode) — Brand Shoot is the default tier for the
-// homepage Contact CTA. Swap to live URL at Track D-3.
-const STRIPE_BRAND_SHOOT_URL = 'https://buy.stripe.com/test_14AdRa9CpfnV5w5dWeeIw02';
+import { BRAND_SHOOT_CHECKOUT_URL } from '@/lib/checkout';
 
 export function Contact() {
   return (
-    <section
-      id="contact"
-      className="bg-paper text-ink"
-      style={{
-        backgroundImage:
-          'linear-gradient(to bottom, var(--color-paper) 0%, var(--color-stone-200) 100%)',
-      }}
-    >
+    <section id="contact" className="bg-paper text-ink border-t border-stone-200">
       <div className="mx-auto max-w-6xl px-space-4 py-space-9 text-center">
         <div className="mb-space-6">
           <div className="text-kicker text-bottle mb-space-2">Contact</div>
@@ -21,13 +12,26 @@ export function Contact() {
         </div>
         <div className="max-w-2xl mx-auto flex flex-col items-center">
           <a
-            href={STRIPE_BRAND_SHOOT_URL}
+            href={BRAND_SHOOT_CHECKOUT_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-space-4 py-space-2 rounded-full bg-bottle text-paper text-body font-medium hover:bg-bottle-deep transition-colors no-underline"
           >
             Start your shoot →
           </a>
+          <p className="mt-space-3 text-body text-ink/70">
+            Brand Shoot, £349. Four-day delivery.
+          </p>
+          <p className="mt-space-4 text-body text-ink/70">
+            Or write first —{' '}
+            <a
+              href="mailto:hello@miracontent.studio"
+              className="text-bottle hover:text-bottle-deep underline underline-offset-[3px] decoration-1"
+            >
+              hello@miracontent.studio
+            </a>
+            . We reply within one working day.
+          </p>
         </div>
       </div>
     </section>

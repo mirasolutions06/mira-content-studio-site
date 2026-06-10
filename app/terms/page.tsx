@@ -187,7 +187,7 @@ export default function TermsPage() {
 
               <h2 className="text-h2 text-ink mt-space-7 mb-space-3">16. Contact</h2>
               <p>
-                Questions about these terms?{' '}
+                Questions about these terms go to{' '}
                 <a href="mailto:hello@miracontent.studio" className="text-bottle underline underline-offset-[3px]">
                   hello@miracontent.studio
                 </a>.

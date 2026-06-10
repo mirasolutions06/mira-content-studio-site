@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap');
+/* Inter Tight is self-hosted via next/font in app/layout.tsx — no external
+ * font chain. The family lands on --font-inter-tight, which tokens.css picks
+ * up in the font stack. */
 @import "tailwindcss";
 @config "../tailwind.config.ts";
 @import "../../brand/04-tokens/tokens.css";
@@ -76,31 +78,31 @@ video[data-hero-loop] {
   40%           { transform: translateY(-3px); opacity: 1; }
 }
 
-/* Marquee — two rows scroll in opposite directions. The track holds two copies
- * of the tile set, so translating -50% of the track width loops seamlessly. */
-@keyframes marquee-left {
-  0%   { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+/* Section reveal — hidden state exists only under html.js (set pre-paint by
+ * the inline script in layout.tsx), so static HTML is fully visible without
+ * JS. SectionReveal adds .in-view from an IntersectionObserver. */
+.js .section-reveal {
+  opacity: 0;
+  transform: translateY(12px);
 }
-@keyframes marquee-right {
-  0%   { transform: translate3d(-50%, 0, 0); }
-  100% { transform: translate3d(0, 0, 0); }
+.js .section-reveal.in-view {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
 }
-@layer utilities {
-  .animate-marquee-left  { animation: marquee-left 90s linear infinite; }
-  .animate-marquee-right { animation: marquee-right 90s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .js .section-reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-/* Ken Burns drift+zoom — used on the Carousel motion row to read as
- * "animated version" of the still image. Alternates direction so adjacent
- * tiles don't drift the same way. */
-@keyframes ken-burns {
-  0%   { transform: scale(1.0)  translate3d(0, 0, 0); }
-  50%  { transform: scale(1.08) translate3d(-1.5%, -1.5%, 0); }
-  100% { transform: scale(1.0)  translate3d(0, 0, 0); }
-}
+/* Brand shadow — the only drop shadow in the system, derived from ink so it
+ * stays warm on paper. Used by the floating CTA. */
 @layer utilities {
-  .animate-ken-burns { animation: ken-burns 14s ease-in-out infinite; }
+  .shadow-brand {
+    box-shadow: 0 4px 24px color-mix(in srgb, var(--color-ink) 10%, transparent);
+  }
 }
 
 /* Reduced-motion: disable everything decorative. */

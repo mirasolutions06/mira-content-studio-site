@@ -98,6 +98,7 @@ export function Nav() {
       {/* Mobile dropdown panel */}
       <div
         id="mobile-menu"
+        inert={!open}
         className={`sm:hidden overflow-hidden border-t border-border-faint transition-[max-height] duration-300 ease-out ${
           open ? 'max-h-[80vh]' : 'max-h-0'
         }`}

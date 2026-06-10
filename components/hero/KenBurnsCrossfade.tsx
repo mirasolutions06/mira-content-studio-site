@@ -71,7 +71,7 @@ export function KenBurnsCrossfade({ projects, projectIndex, reduceMotion }: Prop
             transition={{ duration: reduceMotion ? 0 : 0.6, ease: EASE_OUT_QUART }}
             aria-hidden="true"
           >
-            <span className="text-kicker text-ink/30">Awaiting first generation</span>
+            <span className="text-kicker text-ink/60">Awaiting first generation</span>
           </motion.div>
         )}
       </AnimatePresence>

@@ -7,7 +7,7 @@ type Props = {
 export function LoadingDots({ reduceMotion }: Props) {
   return (
     <div className="flex items-center gap-space-2 px-space-3 py-space-2 rounded-full bg-stone-50 border border-border-faint w-fit">
-      <span className="text-kicker text-ink/50">Generating</span>
+      <span className="text-kicker text-ink/70">Generating</span>
       <span className="flex items-end gap-1 h-3">
         {[0, 1, 2].map((i) => (
           <span

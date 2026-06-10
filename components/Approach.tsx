@@ -18,7 +18,7 @@ export function Approach() {
             <span className="text-bottle">.</span>
           </h2>
         </div>
-        <div className="space-y-space-4 text-body-lg text-ink/80 max-w-prose mx-auto">
+        <div className="space-y-space-4 text-body text-ink/80 max-w-prose mx-auto">
           <p>
             You tell us the brand, the products, the references. We art-direct
             the shoot. Light, composition, hero frame, supporting frames. We
@@ -26,10 +26,10 @@ export function Approach() {
             Either alone falls short.
           </p>
           <p>
-            No subscriptions. No prompt-writing. No revision treadmills. You
-            brief us once. The work comes back finished, on time, sized for
-            every channel.
+            No prompt-writing. No revision treadmills. You brief us once. The
+            work comes back finished, on time, sized for every channel.
           </p>
+          <p className="text-body text-ink/70">— MJ, founder</p>
         </div>
       </div>
     </section>

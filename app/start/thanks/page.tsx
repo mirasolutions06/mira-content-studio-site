@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { TallyEmbed } from './TallyEmbed';
+import { KICKOFF_CALENDLY_URL } from '@/lib/booking';
 
 export const metadata = {
   title: 'Brief — Mira Content Studio',
@@ -29,6 +30,25 @@ export default function ThanksPage() {
             <Suspense fallback={<div className="h-[900px]" />}>
               <TallyEmbed />
             </Suspense>
+
+            {KICKOFF_CALENDLY_URL ? (
+              <div className="mt-space-7 border-t border-border-faint pt-space-6 text-center">
+                <div className="text-kicker text-bottle mb-space-2">Optional</div>
+                <h2 className="text-h3 text-ink">Talk it through first.</h2>
+                <p className="text-body text-ink/70 mt-space-2 max-w-md mx-auto">
+                  Book a 15-minute kickoff call and we&apos;ll align on looks, references, and
+                  timing before the shoot starts.
+                </p>
+                <a
+                  href={KICKOFF_CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-space-4 inline-flex items-center px-space-4 py-space-2 rounded-full border border-bottle text-bottle text-body font-medium hover:bg-bottle hover:text-paper transition-colors no-underline"
+                >
+                  Book a kickoff call →
+                </a>
+              </div>
+            ) : null}
           </div>
         </section>
       </main>

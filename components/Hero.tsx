@@ -13,6 +13,9 @@ export function Hero() {
     const slot = slotRef.current;
     if (!slot) return;
 
+    // Reduced motion: keep the server-rendered poster, never fetch the video.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const v = document.createElement('video');
     v.muted = true;
     v.defaultMuted = true;
@@ -20,7 +23,7 @@ export function Hero() {
     v.loop = true;
     v.playsInline = true;
     v.controls = false;
-    v.preload = 'auto';
+    v.preload = 'metadata';
     v.poster = '/hero/hero-poster.jpg';
     v.setAttribute('muted', '');
     v.setAttribute('autoplay', '');
@@ -62,8 +65,10 @@ export function Hero() {
       if (document.visibilityState === 'visible' && v.paused) v.play().catch(() => {});
     };
 
-    if (v.readyState >= 2) tryPlay();
-    else v.addEventListener('canplay', tryPlay, { once: true });
+    // play() initiates data fetch even with preload='metadata' — call it
+    // directly rather than waiting on canplay (which never fires while the
+    // browser idles at metadata).
+    tryPlay();
     document.addEventListener('visibilitychange', onVisible);
 
     return () => {
@@ -84,43 +89,55 @@ export function Hero() {
       className="relative bg-paper text-ink overflow-hidden"
       aria-label="Mira Content Studio — hero"
     >
-      <div ref={slotRef} className="absolute inset-0" aria-hidden="true" />
+      <div ref={slotRef} className="absolute inset-0" aria-hidden="true">
+        {/* Server-rendered poster: the hero paints from the initial HTML
+         *  instead of waiting for JS to hydrate and inject the video.
+         *  The injected <video> layers on top once it can play. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/hero/hero-poster.jpg"
+          alt=""
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover object-[75%_50%] md:object-right"
+        />
+      </div>
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-32 sm:h-40 md:h-56 z-[5]"
         aria-hidden="true"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(251, 250, 246, 0) 0%, rgba(251, 250, 246, 0.6) 55%, var(--color-paper) 100%)',
+            'linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--color-paper) 60%, transparent) 55%, var(--color-paper) 100%)',
         }}
       />
-      {/* Mobile-only text scrim — paper-toned vertical fade behind the centred
-       *  headline so the bold type lifts off the model's face without boxing
-       *  her in. Kept gentle (≤30% paper) so it reads as soft light, not a wash.
-       *  Hidden from md upward, where the text sits in the left half and
-       *  doesn't overlap her. */}
+      {/* Text scrim — paper-toned vertical fade behind the centred headline so
+       *  the type lifts off the model's face instead of fighting it. Strong in
+       *  the text band (~65% paper), feathered at the edges so it reads as soft
+       *  light, not a wash. Hidden from lg upward, where the text sits in the
+       *  left half and doesn't overlap her. */}
       <div
-        className="md:hidden pointer-events-none absolute inset-0 z-[5]"
+        className="lg:hidden pointer-events-none absolute inset-0 z-[5]"
         aria-hidden="true"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(251, 250, 246, 0) 12%, rgba(251, 250, 246, 0.30) 40%, rgba(251, 250, 246, 0.30) 60%, rgba(251, 250, 246, 0) 88%)',
+            'linear-gradient(to bottom, transparent 8%, color-mix(in srgb, var(--color-paper) 65%, transparent) 35%, color-mix(in srgb, var(--color-paper) 65%, transparent) 65%, transparent 92%)',
         }}
       />
       <div className="relative z-10 mx-auto max-w-6xl px-space-4 sm:px-space-6 py-space-8 min-h-[80vh] flex flex-col justify-center items-center md:items-start text-center md:text-left">
         <div className="max-w-md md:max-w-2xl">
-          <h1 className="text-[3.75rem] leading-[1.0] tracking-[-0.04em] font-bold sm:text-display sm:font-semibold text-ink">
+          <h1 className="text-display font-semibold text-ink">
             <span className="block">Brand content<span className="text-bottle">.</span></span>
             <span className="block">Without the agency<span className="text-bottle">.</span></span>
           </h1>
-          <p className="mt-space-5 text-body-lg sm:text-body font-medium sm:font-normal text-ink/85 sm:text-ink/70 max-w-md">
+          <p className="mt-space-5 text-body text-ink max-w-md">
+            Product photography and campaign video for e-commerce founders.
             One brief in, one finished campaign out.
           </p>
           <div className="mt-space-6 flex flex-wrap justify-center md:justify-start gap-space-2">
             <a
-              href="#contact"
+              href="#pricing"
               className="inline-flex items-center px-space-4 py-space-2 rounded-full bg-bottle text-paper text-body font-medium hover:bg-bottle-deep transition-colors no-underline"
             >
-              Get started →
+              Start your shoot →
             </a>
           </div>
         </div>

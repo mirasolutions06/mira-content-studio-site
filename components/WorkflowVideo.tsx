@@ -136,7 +136,7 @@ export function WorkflowVideo() {
             reduceMotion={reduceMotion}
           />
           <div className="rounded-2xl bg-paper border border-border-faint p-space-3 sm:p-space-4 flex flex-col gap-space-3 aspect-[4/5]">
-            <div className="text-kicker text-ink/40">Studio session</div>
+            <div className="text-kicker text-ink/70">Studio session</div>
             <ChatHistory
               projects={heroProjects}
               statuses={statuses}

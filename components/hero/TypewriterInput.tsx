@@ -96,7 +96,7 @@ export function TypewriterInput({ text, active, reduceMotion, onComplete, cycleK
   return (
     <div className="rounded-full bg-stone-50 border border-border-faint px-space-3 py-space-2 flex items-center gap-space-2">
       <span className="text-body-sm text-ink/70 truncate flex-1">
-        {typed.length > 0 ? <PromptText text={typed} /> : <span className="text-ink/40">Describe your image…</span>}
+        {typed.length > 0 ? <PromptText text={typed} /> : <span className="text-ink/70">Describe the shoot…</span>}
         {active && !reduceMotion && typed.length < text.length ? (
           <span className="inline-block w-[1px] h-3 bg-ink/60 ml-[1px] align-middle animate-pulse" />
         ) : null}

@@ -1,9 +1,4 @@
-// Stripe Payment Links — test mode. Swap to live URLs at Track D-3.
-const STRIPE_URLS: Record<string, string> = {
-  'Try it': 'https://buy.stripe.com/test_cNi00kaGtejR4s18BUeIw01',
-  'Brand Shoot': 'https://buy.stripe.com/test_14AdRa9CpfnV5w5dWeeIw02',
-  Studio: 'https://buy.stripe.com/test_14A8wQ8ylejR4s1f0ieIw03',
-};
+import { CHECKOUT_URLS } from '@/lib/checkout';
 
 interface Tier {
   name: string;
@@ -18,7 +13,7 @@ const tiers: Tier[] = [
   {
     name: 'Try it',
     price: '£99',
-    tagline: 'Test the engine before you commit.',
+    tagline: 'Test the studio before you commit.',
     features: [
       '20 photos + one 10-second video',
       '2 looks · square and vertical',
@@ -42,10 +37,10 @@ const tiers: Tier[] = [
     name: 'Studio',
     price: '£699',
     cadence: '/mo',
-    tagline: 'A Brand Shoot every month. Three-month minimum.',
+    tagline: 'Fresh creative every month, before your ads fatigue. Three-month minimum.',
     features: [
-      'One Brand Shoot a month',
-      'Ongoing social cuts',
+      'One Brand Shoot a month + ongoing social cuts',
+      'Photos and video cuts, all formats',
       'Priority queue',
       'Cancel any time after month three',
     ],
@@ -62,7 +57,8 @@ export function ServicePricing() {
             Three ways to work<span className="text-bottle">.</span> Pick yours<span className="text-bottle">.</span>
           </h2>
           <p className="text-body text-ink/70 mt-space-3 max-w-xl mx-auto">
-            Always below studio rates. No quote calls, no proposal decks.
+            Always below studio rates. No quote calls, no proposal decks. Pay,
+            send the brief, get the work inside the window.
           </p>
         </div>
 
@@ -73,25 +69,28 @@ export function ServicePricing() {
             ))}
           </div>
         </div>
+        <p className="text-body text-ink/70 mt-space-4 text-center">
+          If a frame is not working, we re-shoot at our cost.
+        </p>
       </div>
     </section>
   );
 }
 
 function TierColumn({ tier }: { tier: Tier }) {
-  const href = STRIPE_URLS[tier.name];
+  const href = CHECKOUT_URLS[tier.name];
   return (
     <div className="flex flex-col py-space-5 md:px-space-5">
       <div className="flex items-baseline justify-between mb-space-3 min-h-[1.25rem]">
         <h3 className="text-h3 text-ink">{tier.name}</h3>
         {tier.recommended && (
-          <span className="text-kicker text-bottle">most picked</span>
+          <span className="text-kicker text-bottle">recommended</span>
         )}
       </div>
       <div className="flex items-baseline gap-space-1 mb-space-3">
         <span className="text-h2 text-ink leading-none">{tier.price}</span>
         {tier.cadence && (
-          <span className="text-body-lg text-stone-500">{tier.cadence}</span>
+          <span className="text-body text-ink/70">{tier.cadence}</span>
         )}
       </div>
       <p className="text-body text-ink/70 mb-space-4 max-w-prose">{tier.tagline}</p>

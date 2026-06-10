@@ -20,7 +20,7 @@ const helpLinks: NavLink[] = [
 ];
 
 const social: { label: string; href: string; Icon: () => React.JSX.Element }[] = [
-  { label: 'Instagram', href: 'https://instagram.com/miracontent.studio', Icon: InstagramIcon },
+  { label: 'Instagram', href: 'https://instagram.com/miracontentstudio', Icon: InstagramIcon },
 ];
 
 export function Footer() {
@@ -31,7 +31,7 @@ export function Footer() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-space-5 sm:gap-space-7">
           <div className="col-span-2 sm:col-span-1">
             <AnimatedWordmark subline style={{ fontSize: '2rem' }} />
-            <p className="mt-space-3 text-body-sm text-stone-500 max-w-[18ch]">
+            <p className="mt-space-3 text-body-sm text-ink/70 max-w-[18ch]">
               Brand content. Without the agency.
             </p>
           </div>
@@ -61,14 +61,14 @@ export function Footer() {
             )}
             <a
               href="mailto:hello@miracontent.studio"
-              className="inline-block text-body-sm text-ink no-underline hover:text-bottle transition-colors"
+              className="inline-block text-body-sm text-ink no-underline hover:text-bottle transition-colors [overflow-wrap:anywhere]"
             >
               hello@miracontent.studio
             </a>
           </div>
         </div>
 
-        <div className="mt-space-6 pt-space-4 border-t border-border-faint flex flex-wrap items-center justify-between gap-space-3 text-body-sm text-stone-500">
+        <div className="mt-space-6 pt-space-4 border-t border-border-faint flex flex-wrap items-center justify-between gap-space-3 text-body-sm text-ink/70">
           <span>© {year} Mira Content Studio</span>
           <span>All rights reserved.</span>
         </div>
