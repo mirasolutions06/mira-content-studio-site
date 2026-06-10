@@ -34,6 +34,17 @@ export function WorkflowVideo() {
     timerRef.current = undefined;
   }, []);
 
+  // Warm every demo image on mount. The choreography mounts each <Image> only
+  // at its reveal, so on mobile connections the fetch otherwise starts mid-
+  // animation and the card paints half-loaded.
+  useEffect(() => {
+    heroProjects.forEach((p) => {
+      [p.outputSrc, ...p.refs.map((r) => r.src)].forEach((src) => {
+        if (src) new window.Image().src = src;
+      });
+    });
+  }, []);
+
   // Reduced-motion: render fully populated, no animation.
   useEffect(() => {
     if (!reduceMotion) return;
