@@ -23,7 +23,7 @@ legible without exposing source prompts, provider workflow, or unpublished clien
 
 ## Examples
 
-![Watermarked engine output](screenshots/social-watermarked-output.jpg)
+![Zappy carousel slide with Mira branding](screenshots/social-zappy-carousel.jpg)
 
 ![Mira brand card](screenshots/social-brand-card.jpg)
 
