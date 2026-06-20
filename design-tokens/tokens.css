@@ -1,0 +1,89 @@
+/* Mira Content Studio — Design Tokens
+ *
+ * Single source of truth for color and type, exposed as CSS custom properties.
+ * Imported once at the top of app/globals.css; components read var(--*) from here.
+ *
+ * Generated from the brand system's color and type spec. The typed Tailwind
+ * counterpart lives in design-tokens/tokens.ts.
+ */
+
+:root {
+  /* — Color ———————————————————————————————————————————————— */
+  --color-paper:        #fbfaf6; /* oklch(98.4% 0.005 78)  primary background      */
+  --color-paper-pure:   #ffffff; /* oklch(100%  0     0)   shoot backdrops only    */
+  --color-stone-50:     #f3efe5; /* oklch(95.4% 0.011 80)  panel background        */
+  --color-stone-200:    #ece9df; /* oklch(93.0% 0.013 80)  dividers, hover         */
+  --color-stone-500:    #857c6b; /* oklch(54.5% 0.018 75)  secondary text          */
+  --color-bottle:       #1f4d34; /* oklch(33.2% 0.066 155) primary accent          */
+  --color-bottle-deep:  #0d2c1c; /* oklch(20.5% 0.045 155) bottle pressed/active   */
+  --color-ink:          #0e110d; /* oklch(14.5% 0.004 150) primary text            */
+  --color-border-faint: rgba(14, 17, 13, 0.06);
+
+  /* — Type, family ————————————————————————————————————————— */
+  /* --font-inter-tight is set by next/font on the site (self-hosted woff2);
+   * other surfaces fall back to a locally installed 'Inter Tight'. */
+  --font-sans: var(--font-inter-tight, 'Inter Tight'), 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /* — Type, weights ———————————————————————————————————————— */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* — Type, sizes (canonical desktop values; site/ scales responsively) — */
+  --size-display-xl: 5rem;     /* 80px */
+  --size-display:    clamp(3.5rem, 8vw, 7rem);    /* 56–112px responsive */
+  --size-h1:         clamp(2.5rem, 5vw, 3.5rem);   /* 40–56px responsive */
+  --size-h2:         1.875rem; /* 30px */
+  --size-h3:         1.375rem; /* 22px */
+  --size-body-lg:    1.125rem; /* 18px */
+  --size-body:       1rem;     /* 16px */
+  --size-body-sm:    0.875rem; /* 14px */
+  --size-kicker:     0.6875rem;/* 11px */
+  --size-mono:       0.8125rem;/* 13px */
+
+  /* — Type, line heights —————————————————————————————————— */
+  --leading-display: 1.0;
+  --leading-heading: 1.2;
+  --leading-body:    1.5;
+  --leading-meta:    1.6;
+
+  /* — Type, tracking —————————————————————————————————————— */
+  --tracking-display-xl: -0.045em;
+  --tracking-display:    -0.040em;
+  --tracking-h1:         -0.035em;
+  --tracking-h2:         -0.025em;
+  --tracking-h3:         -0.020em;
+  --tracking-body-lg:    -0.005em;
+  --tracking-body:       -0.003em;
+  --tracking-body-sm:    0;
+  --tracking-kicker:     0.10em;
+
+  /* — Spacing scale (8px base, one 4px micro-step) ————————— */
+  --space-1:  4px;   /* tight inline gaps */
+  --space-2:  8px;   /* label → field */
+  --space-3:  16px;  /* card inner padding tight */
+  --space-4:  24px;  /* card inner padding regular */
+  --space-5:  32px;  /* between text blocks */
+  --space-6:  48px;  /* section title → content */
+  --space-7:  64px;  /* between major content blocks */
+  --space-8:  96px;  /* section vertical padding (regular) */
+  --space-9:  144px; /* section vertical padding (large) */
+  --space-10: 192px; /* hero padding only */
+}
+
+/* Base resets keyed to the tokens. site/ should @import this file once at the
+ * top of its global stylesheet; component CSS reads var(--*) from here. */
+html {
+  font-family: var(--font-sans);
+  font-size: var(--size-body);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

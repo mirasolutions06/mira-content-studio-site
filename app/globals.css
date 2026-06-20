@@ -3,7 +3,7 @@
  * up in the font stack. */
 @import "tailwindcss";
 @config "../tailwind.config.ts";
-@import "../../brand/04-tokens/tokens.css";
+@import "../design-tokens/tokens.css";
 
 /* Page-level resets keyed to the tokens. */
 html { scroll-behavior: smooth; }

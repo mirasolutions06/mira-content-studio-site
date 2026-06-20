@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss';
-import { tokens } from '../brand/04-tokens/tailwind.tokens';
+import { tokens } from './design-tokens/tokens';
 
 const config: Config = {
   content: [
