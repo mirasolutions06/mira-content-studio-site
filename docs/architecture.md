@@ -4,20 +4,15 @@ How a customer brief becomes finished content, and where this repository sits in
 
 ```
 Customer brief / Stripe / Tally
-        |
-        v
+        ↓
 Private content engine
-        |
-        v
+        ↓
 Claude + Higgsfield / provider tools / skills / prompts
-        |
-        v
+        ↓
 Review + revisions
-        |
-        v
+        ↓
 Final assets / Instagram / delivery
-        |
-        v
+        ↓
 Public showcase site
 ```
 

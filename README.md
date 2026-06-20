@@ -2,13 +2,26 @@
 
 [![CI](https://github.com/mirasolutions06/mira-content-studio-site/actions/workflows/ci.yml/badge.svg)](https://github.com/mirasolutions06/mira-content-studio-site/actions/workflows/ci.yml)
 
-![Mira Content Studio](public/og-image.jpg)
-
 This repo is the public showcase layer for Mira Content Studio. The generation engine is
 private; this repo contains the customer-facing static site, design system, portfolio data,
 and launch assets.
 
 **Live:** [miracontent.studio](https://miracontent.studio)
+
+## Preview
+
+![Mira Content Studio hero](docs/screenshots/hero-desktop.jpg)
+
+![Portfolio grid](docs/screenshots/work-grid-desktop.jpg)
+
+![Service and pricing](docs/screenshots/pricing-desktop.jpg)
+
+![Studio series detail](docs/screenshots/studio-detail.jpg)
+
+<img src="docs/screenshots/mobile-home.jpg" alt="Mobile homepage" width="300">
+
+The generation and orchestration engine is private; this repo contains the public showcase
+site and design system.
 
 > **What this repo proves:** front-end engineering, a token-driven design system, static
 > export and deployment, typed content structure, and product presentation. It is the
