@@ -4,7 +4,7 @@
 
 Public showcase site for Mira Content Studio, a creative operations product that turns brand briefs into product photography and campaign video.
 
-The generation engine is private. This repo contains the customer-facing static site, design system, portfolio data, and launch assets.
+The generation engine is not in this repo. This repo contains the customer-facing static site, design system, portfolio data, and launch assets.
 
 **Live:** [miracontent.studio](https://miracontent.studio)
 
