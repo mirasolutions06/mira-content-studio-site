@@ -4,7 +4,7 @@
 
 Public showcase site for Mira Content Studio, a creative operations product that turns brand briefs into product photography and campaign video.
 
-The generation engine is not in this repo. This repo contains the customer-facing static site, design system, portfolio data, and launch assets.
+The generation engine is not in this repo. This repo contains the customer-facing static site, design system, portfolio data, launch assets, and curated examples of the social output layer.
 
 **Live:** [miracontent.studio](https://miracontent.studio)
 
@@ -31,6 +31,10 @@ The generation engine is not in this repo. This repo contains the customer-facin
   [`content/projects/`](content/projects/), typed by [`lib/types.ts`](lib/types.ts) and read at
   build time by [`lib/projects.ts`](lib/projects.ts). Adding a project is a file, not a code
   change.
+- **Channel-ready output layer.** Selected work is packaged for the surfaces it ships on:
+  Instagram feed posts, carousel slides, 9:16 video crops, product pages, and paid-social
+  formats. The public examples use a consistent `m.` watermark and Mira brand-card system;
+  see [`docs/social-output-system.md`](docs/social-output-system.md).
 - **Self-serve commerce, guarded.** Checkout (Stripe Payment Links) and the post-purchase
   booking link each have a single source of truth in [`lib/`](lib/), with a
   `CHECKOUT_IS_TEST_MODE` flag so test links can never ship to production unnoticed.
@@ -82,6 +86,7 @@ docs/                Architecture and the private-engine overview
 - [`CASE_STUDY.md`](CASE_STUDY.md) — end-to-end walkthrough of a campaign, from brief to delivery
 - [`docs/architecture.md`](docs/architecture.md) — how the public site fits into the wider system
 - [`docs/private-engine-overview.md`](docs/private-engine-overview.md) — high-level description of the generation engine
+- [`docs/social-output-system.md`](docs/social-output-system.md) — how selected outputs are packaged for Instagram and other social surfaces
 
 ## A note on the imagery
 

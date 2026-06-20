@@ -49,6 +49,12 @@ This repository is front-end and brand-system proof, not engine proof. Concretel
   ([`lib/checkout.ts`](lib/checkout.ts)), to a structured Tally brief, to an optional kickoff
   call ([`lib/booking.ts`](lib/booking.ts)). Each link has a single source of truth, and a
   `CHECKOUT_IS_TEST_MODE` guard stops test checkout from shipping to production unnoticed.
+- **Social output layer.** The work is not only presented on the site. Selected outputs are
+  packaged for Instagram and other social surfaces with a lightweight brand system: a small
+  `m.` watermark on image/video output, a Mira brand-card slide for carousels, and 4:5 or
+  9:16 channel crops. The source renderers live in the private studio workbench; this public
+  repo includes curated examples and the high-level operating model in
+  [`docs/social-output-system.md`](docs/social-output-system.md).
 
 ## How to read it quickly
 
@@ -56,4 +62,5 @@ This repository is front-end and brand-system proof, not engine proof. Concretel
 2. [`design-tokens/`](design-tokens/) and [`components/hero/`](components/hero/) for the most
    representative engineering.
 3. [`content/projects/`](content/projects/) for the data-driven content model.
-4. The live site at [miracontent.studio](https://miracontent.studio) for the result.
+4. [`docs/social-output-system.md`](docs/social-output-system.md) for the Instagram-ready output layer.
+5. The live site at [miracontent.studio](https://miracontent.studio) for the result.

@@ -26,8 +26,10 @@ revisions, to delivery and, where relevant, publishing.
 - **Approval gates.** Generated assets are not auto-delivered. A human reviews each set, and
   revisions loop back into generation until the work matches the brief. The gate is a
   deliberate quality control, not a bottleneck to remove.
-- **Publishing.** Approved assets can be published to Instagram through the official
-  content-publishing API, which fetches media from public URLs.
+- **Channel packaging.** Approved assets can be packaged for Instagram feed posts, carousel
+  slides, 9:16 video surfaces, product pages, and paid social. Posting is currently manual;
+  an official content-publishing API integration is planned but not exposed in this public
+  repository.
 
 ## What is private, and why
 

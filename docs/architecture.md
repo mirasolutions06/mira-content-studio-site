@@ -11,7 +11,9 @@ Claude + Higgsfield / provider tools / skills / prompts
         ↓
 Review + revisions
         ↓
-Final assets / Instagram / delivery
+Final assets / delivery
+        ↓
+Channel-ready social exports
         ↓
 Public showcase site
 ```
@@ -30,9 +32,12 @@ Public showcase site
    consistent from one job to the next.
 4. **Review and revisions.** Generated assets pass through human approval gates before
    anything is delivered. Revisions loop back into generation until the work meets the brief.
-5. **Final assets / Instagram / delivery.** Approved assets are delivered to the customer and,
-   where relevant, published to Instagram through the content-publishing API.
-6. **Public showcase site.** Selected work feeds back into the portfolio shown on this site,
+5. **Final assets / delivery.** Approved assets are delivered to the customer in the formats
+   the job requires.
+6. **Channel-ready social exports.** Selected assets are packaged for Instagram feed posts,
+   carousel slides, 9:16 video surfaces, product pages, and paid social. Posting is currently
+   an operator step; API publishing is a planned integration, not part of this public repo.
+7. **Public showcase site.** Selected work feeds back into the portfolio shown on this site,
    closing the loop between what the engine produces and what new customers see.
 
 ## What is public versus private
