@@ -12,6 +12,8 @@ and launch assets.
 
 ![Mira Content Studio hero](docs/screenshots/hero-desktop.jpg)
 
+![Process: any reference in, brand content out](docs/screenshots/workflow-demo.jpg)
+
 ![Portfolio grid](docs/screenshots/work-grid-desktop.jpg)
 
 ![Service and pricing](docs/screenshots/pricing-desktop.jpg)
